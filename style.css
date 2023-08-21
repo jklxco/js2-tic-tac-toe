@@ -1,0 +1,10 @@
+#gameboard {
+    display: grid;
+    height: 70vw;
+    width: 70vw;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+.square {
+    border: 2px solid red;
+}
