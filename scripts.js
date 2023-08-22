@@ -6,12 +6,39 @@ const gameboard = (() => {
         gameInProgress === true ? currentPlayer.playCounter(e) : 0;
       });
     });
+    _addHoverEventListener(squares)
   })();
+
+  function _addHoverEventListener(squares){
+    squares.forEach((square) => {
+      square.addEventListener("mouseover", (e) => {
+        gameInProgress === true ? _hoverCounter(e) : 0;    
+      });
+      square.addEventListener("mouseout", (e) => {
+        gameInProgress === true ? _hoverCounter(e) : 0;    
+      });
+    });
+  }
+
+  function _hoverCounter(e) {
+    index = e.target.id.charAt(e.target.id.length - 1);
+    let square = document.querySelector(`#square-${index}`);
+    (!square.classList.contains('cross') && !square.classList.contains('circle')) ?
+      (currentPlayer.counter === 'X') ? square.classList.toggle('cross-hover') :
+      square.classList.toggle('circle-hover') : 0;
+  }
 
   function updateBoard() {
     boardArray.forEach((item, index) => {
       let square = document.querySelector(`#square-${index}`);
-      square.innerText = item;
+      if (item === 'X' ) {
+        square.classList.remove('cross-hover')
+        square.classList.add('cross')
+      } else if (item === 'O' ) {
+        square.classList.remove('circle-hover')
+        square.classList.add('circle')
+      }
+      
     });
   }
 
@@ -32,10 +59,8 @@ const game = (() => {
 
   function handleCounter() {
     if (_checkWinner()) {
-      console.log("Winner!!!");
       _handleWin();
     } else if (!boardArray.includes("")) {
-      console.log("It's A Tie!");
       _handleDraw();
     } else {
       _switchTurn();

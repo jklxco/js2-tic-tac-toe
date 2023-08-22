@@ -7,5 +7,54 @@
 
 .square {
     border: 2px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.cross::after,
+.cross::before,
+.cross-hover::after,
+.cross-hover::before {
+    content: '';
+    width: 10%;
+    height: 100%;
+    background-color: red;
+    position: absolute;
+}
+
+.cross::after,
+.cross-hover::after {
+    transform: rotate(45deg)
+}
+
+.cross::before,
+.cross-hover::before {
+    transform: rotate(-45deg)
+}
+
+.circle::after,
+.circle::before {
+    content: '';
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.circle::after {
+    background-color: inherit;
+    background-color: white;
+    transform: scale(75%)
+}
+
+.circle::before {
+    background-color: rgb(31, 62, 199);
+}
+
+.cross-hover::after,
+.cross-hover::before {
+    background-color: rgb(175, 175, 175);
 }
 
