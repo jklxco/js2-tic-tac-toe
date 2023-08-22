@@ -3,10 +3,11 @@
     height: 70vw;
     width: 70vw;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    border: 5px solid black;
 }
 
 .square {
-    border: 2px solid red;
+    border: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,7 +36,9 @@
 }
 
 .circle::after,
-.circle::before {
+.circle::before,
+.circle-hover::after,
+.circle-hover::before {
     content: '';
     width: 80%;
     height: 80%;
@@ -43,7 +46,8 @@
     border-radius: 50%;
 }
 
-.circle::after {
+.circle::after,
+.circle-hover::after {
     background-color: inherit;
     background-color: white;
     transform: scale(75%)
@@ -54,7 +58,8 @@
 }
 
 .cross-hover::after,
-.cross-hover::before {
+.cross-hover::before,
+.circle-hover::before {
     background-color: rgb(175, 175, 175);
 }
 
